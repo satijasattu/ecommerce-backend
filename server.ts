@@ -12,7 +12,7 @@ import { userSchemaValidator } from "./middleware/userSchemaValidator";
 
 dotenv.config();
 
-const app: Express = express();
+export const app: Express = express();
 const port = process.env.PORT;
 
 app.use(express.json());
@@ -21,7 +21,7 @@ app.use("/api/product",productSchemaValidator,productRouter);
 app.use("/api/category",categorySchemaValidator,categoryRouter);
 app.use("/api/user",userSchemaValidator,userRouter);
 
-app.listen(port, () => {
+ app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
 });
 
