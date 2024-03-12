@@ -1,12 +1,14 @@
-import { expect } from "chai";
 import request  from "supertest";
 import { app } from "../server";
+import { expect } from "chai";
+import { mockOrderPostBody } from "../mockData/mockpostbody";
+import { Order } from "../models/order";
 
 
     describe("Order Controller", () => {
       it("GET / Get Order List ", (done) => {
         request(app)
-          .get("")
+          .get("/api/order")
           .expect(200)
           .end((err: any, response: { body: any; }) => {
             expect(response.body).length.to.be.equal(2);
@@ -18,39 +20,16 @@ import { app } from "../server";
           });
       });
   
-    //   it('POST / should successfully create a new item', (done) => {
-    //     request(app)
-    //       .post('/item/')
-    //       .send(sampleItemVal)
-    //       .expect(200)
-    //       .end((err: any, response: { body: any; }) => {
-    //         expect(response.body).to.have.property('message').to.equal('Item created successfully!');
-    //         expect(response.body)
-    //           .to.have.property('item')
-    //           .to.have.property('name')
-    //           .to.equal('sample item');
-    //         expect(response.body).to.have.property('item').to.have.property('price').to.equal(10);
-    //         expect(response.body).to.have.property('item').to.have.property('rating').to.equal('5');
-    //         expect(response.body).to.have.property('item').to.have.property('hash').to.equal(hash);
-    //         done(err);
-    //       });
-    //   });
+      it('POST / Order', (done) => {
+        request(app)
+          .post('/api/order')
+          .send(mockOrderPostBody)
+          .expect(200)
+          .end((err: any, response: { body: any; }) => {
+            let orderList  : Order [] = response.body;
+           expect(orderList.length).to.equal(3);
+           done(err);
+          });
+      });
   
-    // //   it('PUT / should successfully update hash for a given item', (done) => {
-    // //     request(app)
-    // //       .put('/item')
-    // //       .send(hash)
-    // //       .expect(200)
-    // //       .end((err: any, response: { body: any; }) => {
-    // //         expect(response.body).to.have.property('message').to.equal('Item updated successfully!');
-    // //         expect(response.body)
-    // //           .to.have.property('item')
-    // //           .to.have.property('name')
-    // //           .to.equal('sample item');
-    // //         expect(response.body).to.have.property('item').to.have.property('price').to.equal(10);
-    // //         expect(response.body).to.have.property('item').to.have.property('rating').to.equal('5');
-    // //         expect(response.body).to.have.property('item').to.have.property('hash').to.equal(hash);
-    // //         done(err);
-    // //       });
-    //   });
     });

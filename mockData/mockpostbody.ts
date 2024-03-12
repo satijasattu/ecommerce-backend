@@ -1,4 +1,7 @@
+import { Category } from "../models/category";
 import { Order } from "../models/order";
+import { Product } from "../models/product";
+import { User } from "../models/user";
 
 export const mockOrderPostBody : Order =
 
@@ -23,4 +26,38 @@ export const mockOrderPostBody : Order =
         
     ]
 
+}
+
+
+export const mockCaegoryPostBody : Category =
+
+ {
+        "categoryId":"KIT098768",
+        "categoryName":"Kitchen",
+        "categoryDescription":"Category containing kitchen products"
+  }
+
+
+export const mockProductPostBody : Product =
+
+{
+            "productId" :"KI098", 
+            "productName":"Utensils Stand",
+            "productDescription":"This is a utensils stand",
+            "productCategory":{
+                "categoryId":"KIT098768",
+                "categoryName":"Kitchen",
+                "categoryDescription":"Category containing kitchen products"
+            },
+            "productPrice":400, 
+
+}
+
+
+export const mockUserPostBody : User =
+
+{
+    "userId":"USR004",
+    "userName":"Bmkesh bakshi",
+    "userRoles" : ["ROLE_FIREARM","ROLE_EXPLOSIVES","ROLE_CLOTHING"]
 }

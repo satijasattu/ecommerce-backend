@@ -21,7 +21,18 @@ export const orderSchema = {
       productId : { type: "string"},
       productName: { type: "string"},
       productDescription : { type: "string"},
-      productCategory : { type: "string"},
+      productCategory : 
+      { 
+        type: "object",
+        properties : {
+          categoryId : { type: "string"},
+          categoryName: { type: "string"},
+          categoryDescription : { type: "string"},
+      },
+  
+       required: ["categoryName", "categoryDescription"]
+      },
+  
       productPrice : { type: "number"}
      
      },
