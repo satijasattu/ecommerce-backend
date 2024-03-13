@@ -49,7 +49,7 @@ export const mockProductPostBody : Product =
                 "categoryName":"Kitchen",
                 "categoryDescription":"Category containing kitchen products"
             },
-            "productPrice":400, 
+            "productPrice":400
 
 }
 
